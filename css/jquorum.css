@@ -1,0 +1,61 @@
+/* Header */
+
+html,body{
+	min-width:800px;
+}
+.overall-header{
+	padding:10px;
+	height:24px;
+}
+.header-logo{
+	font-size:20px;
+	float:left;
+	cursor:pointer;
+}
+.header-right{
+	float:right;
+	font-size: 11px;
+}
+.header-right input{
+	color:gray;
+	border:1px solid #ddd;
+	padding:3px;
+}
+.header-right input:focus{
+	color:black;
+	outline:none;
+}
+.header-pages{
+	padding:10px 20px 10px 20px;
+	margin-top:-1px;
+	height:24px;
+}
+.header-pages ul{
+	list-style:none;
+	padding:0;
+	margin:2px 0px 0px 0px;
+	float:left;
+}
+.header-pages ul li{
+	float:left;
+	margin-right:10px;
+	cursor:pointer;
+}
+.header-pages ul li:hover{
+	text-decoration: underline;
+}
+.header-search{
+	float:right;
+	background-color:white;
+	padding:2px;
+	border:1px solid #ddd;
+}
+.header-search input{
+	font-size:11px;
+	border:none;
+	outline:none;
+	float:right;
+}
+.header-search div{
+	float:left;
+}
