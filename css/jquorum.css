@@ -1,34 +1,76 @@
+/* Dialog */
+
+.ui-dialog{
+	font-size:14px;
+	text-align:center;
+}
+.ui-dialog input{
+	color:black;
+	border:1px solid #ddd;
+	padding:3px;
+	font-family:'Open Sans', sans-serif;
+	outline:none;
+}
+#register-dialog input{
+	width:65%;
+}
+
 /* Header */
 
 html,body{
 	min-width:800px;
+	font-family:'Open Sans', sans-serif;
+}
+button, input, li{
+	font-family:'Open Sans', sans-serif;
+	cursor:pointer;
+}
+label{
+	float:left;
+	width:25%;
+	margin-right:5px;
+	padding-top:5px;
+	text-align:right;
+	font-weight:bold;
 }
 .overall-header{
 	padding:10px;
 	height:24px;
+}
+.overall-header a{
+	text-decoration:none;
 }
 .header-logo{
 	font-size:20px;
 	float:left;
 	cursor:pointer;
 }
+.header-logo:hover{
+	text-decoration:none;
+}
 .header-right{
 	float:right;
 	font-size: 11px;
+	font-weight:normal;
 }
 .header-right input{
 	color:gray;
 	border:1px solid #ddd;
 	padding:3px;
+	font-family:'Open Sans', sans-serif;
 }
 .header-right input:focus{
 	color:black;
 	outline:none;
 }
+.header-postlogin{
+	display:none;
+}
 .header-pages{
 	padding:10px 20px 10px 20px;
 	margin-top:-1px;
 	height:24px;
+	font-size:14px;
 }
 .header-pages ul{
 	list-style:none;
@@ -38,7 +80,7 @@ html,body{
 }
 .header-pages ul li{
 	float:left;
-	margin-right:10px;
+	margin-right:15px;
 	cursor:pointer;
 }
 .header-pages ul li:hover{
@@ -58,4 +100,23 @@ html,body{
 }
 .header-search div{
 	float:left;
+}
+.header-links{
+	padding:6px;
+	margin:0px;
+	margin-left:15px;
+	font-size:12px;
+}
+.header-links li{
+	float:left;
+	margin-right:25px;
+}
+.header-links li:first-child{
+	list-style:none;
+}
+.header-links a{
+	text-decoration:none;
+}
+.header-links a:hover{
+	text-decoration:underline;
 }

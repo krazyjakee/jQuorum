@@ -5,6 +5,8 @@
 	$pass = "root";
 	$daba = "jquorum";
 	
+	$salt = "fdhjskl89u9898fldssss";
+	
 	$conn = mysql_connect($host,$user,$pass);
 	mysql_select_db($daba);
 	

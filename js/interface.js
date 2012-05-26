@@ -12,12 +12,27 @@ var Interface = {
 	
 	},
 	
-	showRegisterForm: function(){
+	showSettings: function(id){
 	
+	},
+	
+	showRegisterForm: function(){
+		$("#register-dialog").dialog('open');
 	},
 	
 	showHelpPage: function(){
 	
+	},
+	
+	doLogin: function(userData){
+		$('.header-prelogin').hide();
+		$('.header-postlogin').show();
+		$('#header-username').html(userData);
+	},
+	
+	doLogout: function(){
+		$('.header-postlogin').hide();
+		$('.header-prelogin').show();
 	}
 	
 }
