@@ -1,0 +1,22 @@
+html,body{
+	background-color:#000;
+}
+#tabs{
+	padding:10px;
+}
+.tab-content td{
+	vertical-align: top;
+}
+.tab-content ul{
+	list-style: none;
+	padding:0px;
+	margin:0px;
+}
+.tab-content td:first-child{
+	width:200px;
+	border-right:1px dotted grey;
+	font-size:12px;
+}
+.adminpage{
+	padding:20px;
+}

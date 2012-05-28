@@ -27,12 +27,13 @@ var Interface = {
 	doLogin: function(userData){
 		$('.header-prelogin').hide();
 		$('.header-postlogin').show();
-		$('#header-username').html(userData);
+		$('#header-username').html(userData.username);
 	},
 	
 	doLogout: function(){
 		$('.header-postlogin').hide();
 		$('.header-prelogin').show();
+		AJAX.logout();
 	}
 	
 }

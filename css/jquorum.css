@@ -4,15 +4,34 @@
 	font-size:14px;
 	text-align:center;
 }
-.ui-dialog input{
+.ui-dialog input, .ui-dialog textarea{
 	color:black;
 	border:1px solid #ddd;
 	padding:3px;
 	font-family:'Open Sans', sans-serif;
 	outline:none;
 }
-#register-dialog input{
+.ui-dialog label{
+	float:left;
+	width:25%;
+	margin-right:5px;
+	padding-top:5px;
+	text-align:right;
+	font-weight:bold;
+}
+.ui-dialog .checkbox_label{
+	width: 100%;
+	float:none;
+}
+#register-dialog input[type=text], #register-dialog input[type=password]{
 	width:65%;
+}
+#register-dialog textarea{
+	width:65%;
+	font-size:11px;
+}
+#recaptcha_area{
+    margin: 0 auto;
 }
 
 /* Header */
@@ -21,17 +40,12 @@ html,body{
 	min-width:800px;
 	font-family:'Open Sans', sans-serif;
 }
-button, input, li{
+input{
+	font-family:'Open Sans', sans-serif;
+}
+button, input[type=submit], input[type=button], li{
 	font-family:'Open Sans', sans-serif;
 	cursor:pointer;
-}
-label{
-	float:left;
-	width:25%;
-	margin-right:5px;
-	padding-top:5px;
-	text-align:right;
-	font-weight:bold;
 }
 .overall-header{
 	padding:10px;
@@ -101,11 +115,29 @@ label{
 .header-search div{
 	float:left;
 }
+.header-breadcrumbs{
+	padding:6px;
+	margin:0px;
+	margin-left:15px;
+	font-size:12px;
+	float:left;
+	list-style: none;
+}
+.header-breadcrumbs li, .header-breadcrumbs div{
+	float:left;
+}
+.header-breadcrumbs a{
+	text-decoration:none;
+}
+.header-breadcrumbs a:hover{
+	text-decoration:underline;
+}
 .header-links{
 	padding:6px;
 	margin:0px;
 	margin-left:15px;
 	font-size:12px;
+	float:right;
 }
 .header-links li{
 	float:left;

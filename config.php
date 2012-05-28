@@ -11,5 +11,9 @@
 	mysql_select_db($daba);
 	
 	$result = mysql_query("select * from settings");
-	$forum_settings = mysql_fetch_assoc($result);
+	$forum_settings = array();
+	while(($line = mysql_fetch_assoc($result)) != null){
+		$forum_settings[$line['setting']] = $line['value'];
+	}
+	
 ?>
