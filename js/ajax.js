@@ -56,6 +56,23 @@ var AJAX = {
 				}
 			}
 		});
-	}
+	},
+	
+	loadBoards: function(callback){
+		Boards.loadedBoards = [];
+		$.ajax({
+			url: 'ajax/boards.php',
+			data: 'do=loadboards',
+			type: 'post',
+			success: function(json){
+				json = eval('('+json+')');
+				$.each(json, function(index, board){
+					Boards.loadedBoards.push(board);
+				});
+				if(callback){ callback(); }
+			}
+		});
+		
+	},
 	
 }

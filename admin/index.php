@@ -26,14 +26,13 @@
 		<form action="" id="login-form" method="post" class="header-right header-prelogin">
 			<input onclick="Interface.loginInputClick(this)" type="text" name="username" value="User Name" class="text ui-corner-all" />
 			<input onclick="Interface.loginInputClick(this)" type="password" name="password" value="Password" class="text ui-corner-all" />
-			<button type="submit" class="ui-button-text-only ui-widget ui-state-default ui-corner-all">Login</button> | 
-			<button type="button" class="ui-button-text-only ui-widget ui-state-default ui-corner-all" onclick="Interface.showRegisterForm()">Register</button>
-			<button type="button" class="ui-button-text-only ui-widget ui-state-default ui-corner-all" onclick="Interface.showHelpPage()">Help</button>
+			<button type="submit" >Login</button> | 
+			<button type="button" onclick="Interface.showRegisterForm()">Register</button>
+			<button type="button" onclick="Interface.showHelpPage()">Help</button>
 		</form>
 		<div class="header-right header-postlogin">
 			Welcome <b><a href="#" id="header-username" class="body-link"></a></b>
-			<button type="button" class="ui-button-text-only ui-widget ui-state-default ui-corner-all" onclick="Interface.showSettings()">Settings</button>
-			<button type="button" class="ui-button-text-only ui-widget ui-state-default ui-corner-all" onclick="Interface.doLogout()">Log out</button>
+			<button type="button" onclick="Interface.doLogout(); window.location.href='/'">Log out</button>
 		</div>
 	</div>
 	<div id="header-pages" class="ui-widget ui-widget-content ui-corner-bottom">
@@ -59,7 +58,25 @@
 					</tr>
 				</table>
 			</div>
-			<div id="tabs-2">
+			<div id="tabs-2" class="tab-content">
+				<?php include 'pages/forums.php'; ?>
+			</div>
+			<div id="tabs-3" class="tab-content">
+				<table width="100%">
+					<tr>
+						<td>
+							<ul>
+								<li onclick="Admin.showPage(this,'users')">Edit Users</li>
+								<li onclick="Admin.showPage(this,'groups')">Edit Groups</li>
+							</ul>
+						</td>
+						<td>
+							
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div id="tabs-4" class="tab-content">
 				<table width="100%">
 					<tr>
 						<td>
@@ -71,31 +88,7 @@
 					</tr>
 				</table>
 			</div>
-			<div id="tabs-3">
-				<table width="100%">
-					<tr>
-						<td>
-							
-						</td>
-						<td>
-							
-						</td>
-					</tr>
-				</table>
-			</div>
-			<div id="tabs-4">
-				<table width="100%">
-					<tr>
-						<td>
-							
-						</td>
-						<td>
-							
-						</td>
-					</tr>
-				</table>
-			</div>
-			<div id="tabs-5">
+			<div id="tabs-5" class="tab-content">
 				<table width="100%">
 					<tr>
 						<td>

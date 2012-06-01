@@ -1,39 +1,3 @@
-/* Dialog */
-
-.ui-dialog{
-	font-size:14px;
-	text-align:center;
-}
-.ui-dialog input, .ui-dialog textarea{
-	color:black;
-	border:1px solid #ddd;
-	padding:3px;
-	font-family:'Open Sans', sans-serif;
-	outline:none;
-}
-.ui-dialog label{
-	float:left;
-	width:25%;
-	margin-right:5px;
-	padding-top:5px;
-	text-align:right;
-	font-weight:bold;
-}
-.ui-dialog .checkbox_label{
-	width: 100%;
-	float:none;
-}
-#register-dialog input[type=text], #register-dialog input[type=password]{
-	width:65%;
-}
-#register-dialog textarea{
-	width:65%;
-	font-size:11px;
-}
-#recaptcha_area{
-    margin: 0 auto;
-}
-
 /* Header */
 
 html,body{
@@ -43,7 +7,17 @@ html,body{
 input{
 	font-family:'Open Sans', sans-serif;
 }
-button, input[type=submit], input[type=button], li{
+.jquorum-text-input{
+	color:gray !important;
+	border:1px solid #ddd !important;
+	padding:3px !important;
+	font-family:'Open Sans', sans-serif !important;
+}
+.jquorum-text-input:focus{
+	color:black !important;
+	outline:none !important;
+}
+button, input[type=submit], input[type=button]{
 	font-family:'Open Sans', sans-serif;
 	cursor:pointer;
 }
@@ -67,15 +41,8 @@ button, input[type=submit], input[type=button], li{
 	font-size: 11px;
 	font-weight:normal;
 }
-.header-right input{
-	color:gray;
-	border:1px solid #ddd;
-	padding:3px;
-	font-family:'Open Sans', sans-serif;
-}
-.header-right input:focus{
-	color:black;
-	outline:none;
+#header-username{
+	margin-right:5px;	
 }
 .header-postlogin{
 	display:none;
@@ -151,4 +118,92 @@ button, input[type=submit], input[type=button], li{
 }
 .header-links a:hover{
 	text-decoration:underline;
+}
+
+/* Content */
+
+.loader{
+	width:100%;
+	text-align:center;
+}
+.content-container{
+	margin: 30px 10px 0px 10px;
+}
+.contentpanel-content{
+	padding:10px;
+}
+.boardpanel-content{
+	padding:10px;
+	margin-bottom:10px;
+}
+.boardpanel-content ul{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+.boardpanel-content ul li{
+	padding: 15px;
+	font-size: 14px;
+	cursor:pointer;
+	font-weight:bold;
+}
+.boardpanel-content ul li div a{
+	font-size:11px;
+	margin:5px 0px 0px 5px;
+	text-decoration: underline !important;
+}
+.subboard-title .ui-icon{
+	float:left;
+	margin-right:5px;
+}
+.subboard-right{
+	float:right;
+	font-size:11px;
+}
+
+/* Dialog */
+
+.dialogs-container{
+	display:none;
+}
+.ui-dialog{
+	font-size:14px;
+	text-align:center;
+}
+.ui-dialog input, .ui-dialog textarea{
+	color:black;
+	border:1px solid #ddd;
+	padding:3px;
+	font-family:'Open Sans', sans-serif;
+	outline:none;
+}
+.ui-dialog label{
+	float:left;
+	width:25%;
+	margin-right:5px;
+	padding-top:5px;
+	text-align:right;
+	font-weight:bold;
+}
+.ui-dialog .checkbox_label{
+	width: 100%;
+	float:none;
+}
+#register-dialog input[type=text], #register-dialog input[type=password]{
+	width:65%;
+}
+#register-dialog textarea{
+	width:65%;
+	font-size:11px;
+}
+#recaptcha_area{
+    margin: 0 auto;
+}
+
+/* Footer */
+
+.powered-by{
+	text-align:center;
+	font-size:11px;
+	width:100%;
 }
