@@ -2,6 +2,7 @@ jQuery.fn.exists = function(){return this.length>0;}
 
 $(function(){
 	$("#register-dialog").dialog({modal: true, autoOpen: false, width: 600, draggable: false, resizable: false, show: { effect: 'drop', direction: 'up' }, hide: { effect: 'drop', direction: 'up' }});
+	$("#newthread-dialog").dialog({modal: true, autoOpen: false, width: 750, draggable: false, resizable: false, show: { effect: 'drop', direction: 'up' }, hide: { effect: 'drop', direction: 'up' }});
 });
 
 var loaderHTML = '<div class="loader"><img src="img/loader.gif" alt="loading..." /></div>';
@@ -11,17 +12,18 @@ $(window).load(function(){
 	// Get style data and update the elements that jqueryui themes fail to style such as the body background.
 	var coreFontColor = $('.ui-widget-content:first').css('color');
 	if(forum_config['bodycss']){
-		$('html,body').addClass('bodycss');
+		$('html').addClass('bodycss');
 		coreFontColor = $('body').css('color');
 	}else{
 		coreBackColor = $('.ui-widget-content:first').css('background-color');
-		$('html,body').css('background-color',coreBackColor);
+		$('html').css('background-color',coreBackColor);
 	}
 	$('.body-links, .body-links li, .body-links a').css('color',coreFontColor);
 	$('#register-dialog input, #register-dialog textarea').addClass('text ui-corner-all');
 	
 	// Style all buttons as they should be.
 	$('input[type="button"], input[type="submit"], button').button();
+	$('.checkbutton').button(); $('.buttonset').buttonset();
 	
 	// Perform a login request.
 	$('#login-form').submit(function(){
@@ -65,5 +67,7 @@ $(window).load(function(){
 	
 	// Load boards and populate main index.
 	AJAX.loadBoards(function(){ Boards.populateBoardPanels(0); });
+	
+	$('#newthread-tabs').tabs();
 
 });

@@ -1,14 +1,30 @@
 var Effects = {
 	Transitions: {
 		
-		basic: function(a,b,callback){
+		basic: function(a,b,changes,callback){
 			$(a).hide();
+			if(changes){ changes(); }
 			$(b).show();
 			if(callback){ callback(); }
 		},
 		
-		fade: function(a,b,speed,callback){
+		fade: function(a,b,speed,changes,callback){
+			/* $(a).resetKeyframe(function(){
+				$(b).resetKeyframe(function(){
+					$(a).playKeyframe('fadeOut 500 ease 0 1 normal forwards',function(){
+						$(a).hide();
+						if(changes){ changes(); }
+						$(b).show();
+						$(b).playKeyframe('fadeIn 500 ease 0 1 normal forwards',function(){
+							
+							if(callback){ callback(); }
+						});
+					});
+				});
+			}); */
+			
 			$(a).fadeOut(speed, function(){
+				if(changes){ changes(); }
 				$(b).fadeIn(speed, function(){
 					if(callback){ callback(); }
 				});
@@ -19,6 +35,7 @@ var Effects = {
 			$(a).resetKeyframe(function(){
 				$(b).resetKeyframe(function(){
 					$(a).playKeyframe('transition-iShuffleA 1000 ease 0 1 normal forwards');
+					if(changes){ changes(); }
 					$(b).show();
 					if($(b).position().top > $(a).position().top){
 						$(b).css('margin-top','-'+$(a).height()+'px');
@@ -35,11 +52,13 @@ var Effects = {
 			});
 		},
 		
-		zoom: function(a,b,callback){
+		zoom: function(a,b,changes,callback){
 			$(a).resetKeyframe(function(){
 				$(b).resetKeyframe(function(){
 					$(a).playKeyframe('transition-zoomA 400 ease 0 1 normal forwards',function(){
-						$(a).hide(); $(b).show();
+						$(a).hide();
+						if(changes){ changes(); }
+						$(b).show();
 						$(b).playKeyframe('transition-zoomB 400 ease 0 1 normal forwards',function(){
 							if(callback){ callback(); }
 						});
@@ -48,12 +67,13 @@ var Effects = {
 			});
 		},
 		
-		morphSpin: function(a,b,callback){
+		morphSpin: function(a,b,changes,callback){
 			$(a).resetKeyframe(function(){
 				$(b).resetKeyframe(function(){
 					$(a).playKeyframe('transition-morphSpinA 1000 ease 0 1 normal forwards',function(){
 						$(a).hide();
 					});
+					if(changes){ changes(); }
 					$(b).show();
 					if($(b).position().top > $(a).position().top){
 						$(b).css('margin-top','-'+$(a).height()+'px');
@@ -100,5 +120,13 @@ $(window).load(function(){
 		name: "transition-morphSpinB",
 	    "from": browser+"transform:rotate(-360deg);opacity:0.0",
 	    "to": browser+"transform:rotate(0deg);opacity:1.0"
+	},{
+		name: "fadeOut",
+		"from": "opacity:1.0",
+		"to": "opacity:0.0"
+	},{
+		name: "fadeIn",
+		"from": "opacity:0.0",
+		"to": "opacity:1.0"
 	}]);
 });

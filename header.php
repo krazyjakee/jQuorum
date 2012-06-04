@@ -11,6 +11,7 @@
 		
 	?>
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
 	<link rel="stylesheet" href="css/jquorum.css" type="text/css" />
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
@@ -34,14 +35,14 @@
 		<form action="" id="login-form" method="post" class="header-right header-prelogin">
 			<input onclick="Interface.loginInputClick(this)" type="text" name="username" value="User Name" class="text ui-corner-all jquorum-text-input" />
 			<input onclick="Interface.loginInputClick(this)" type="password" name="password" value="Password" class="text ui-corner-all jquorum-text-input" />
-			<button type="submit">Login</button> | 
+			<button type="submit"><span class="ui-button-icon-primary icon-signin"></span> Login</button> | 
 			<button type="button" onclick="Interface.showRegisterForm()">Register</button>
-			<button type="button" onclick="Interface.showHelpPage()">Help</button>
+			<button type="button" onclick="Interface.showHelpPage()"><span class="ui-button-icon-primary icon-question-sign"></span> Help</button>
 		</form>
 		<div class="header-right header-postlogin">
 			Welcome <b><a href="#" id="header-username" class="body-link"></a></b>
-			<button type="button" onclick="Interface.showSettings()">Settings</button>
-			<button type="button" onclick="Interface.doLogout()">Log out</button>
+			<button type="button" onclick="Interface.showSettings()"><span class="ui-button-icon-primary icon-cog"></span> Settings</button>
+			<button type="button" onclick="Interface.doLogout()"><span class="ui-button-icon-primary icon-signout"></span> Log out</button>
 		</div>
 	</div>
 	<div id="header-pages" class="ui-widget ui-widget-content ui-corner-bottom header-pages">
@@ -56,7 +57,7 @@
 	</div>
 	
 	<ul id="header-breadcrumbs" class="header-breadcrumbs body-links">
-		<li><a href="#"><div class="ui-icon ui-icon-home" onclick="Interface.showHome()"></div></a></li>
+		<li><a href="#"><div class="icon-home" onclick="Interface.showHome()"></div></a></li>
 	</ul>
 	
 	<ul id="header-links" class="header-links body-links">

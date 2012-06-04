@@ -24,6 +24,7 @@ button, input[type=submit], input[type=button]{
 .overall-header{
 	padding:10px;
 	height:24px;
+	font-size:20px;
 }
 .overall-header a{
 	text-decoration:none;
@@ -126,6 +127,10 @@ button, input[type=submit], input[type=button]{
 	width:100%;
 	text-align:center;
 }
+.toolbar{
+	padding:5px;
+	font-size:11px;
+}
 .content-container{
 	margin: 30px 10px 0px 10px;
 }
@@ -149,14 +154,25 @@ button, input[type=submit], input[type=button]{
 }
 .boardpanel-content ul li div a{
 	font-size:11px;
-	margin:5px 0px 0px 5px;
-	text-decoration: underline !important;
+	margin:5px 0px 0px 0px;
+	text-decoration: none;
+}
+.boardpanel-content ul li div a:hover{
+	text-decoration: underline;
 }
 .subboard-title .ui-icon{
 	float:left;
 	margin-right:5px;
 }
 .subboard-right{
+	float:right;
+	font-size:11px;
+}
+.thread-title .ui-icon{
+	float:left;
+	margin-right:5px;
+}
+.thread-title-right{
 	float:right;
 	font-size:11px;
 }
@@ -168,7 +184,6 @@ button, input[type=submit], input[type=button]{
 }
 .ui-dialog{
 	font-size:14px;
-	text-align:center;
 }
 .ui-dialog input, .ui-dialog textarea{
 	color:black;
@@ -177,7 +192,15 @@ button, input[type=submit], input[type=button]{
 	font-family:'Open Sans', sans-serif;
 	outline:none;
 }
-.ui-dialog label{
+.ui-dialog .checkbox_label{
+	width: 100%;
+	float:none;
+}
+#register-dialog{
+	font-size:14px;
+	text-align:center;
+}
+#register-dialog label{
 	float:left;
 	width:25%;
 	margin-right:5px;
@@ -185,19 +208,32 @@ button, input[type=submit], input[type=button]{
 	text-align:right;
 	font-weight:bold;
 }
-.ui-dialog .checkbox_label{
-	width: 100%;
-	float:none;
-}
 #register-dialog input[type=text], #register-dialog input[type=password]{
 	width:65%;
 }
 #register-dialog textarea{
 	width:65%;
 	font-size:11px;
+	resize:vertical;
+	overflow:auto;	
 }
 #recaptcha_area{
     margin: 0 auto;
+}
+.writethread{
+
+}
+.writethread div:first-child{
+	padding:1px;
+}
+.writethread textarea{
+	width:670px;
+	height:200px;
+	resize:vertical;
+	overflow:auto;
+}
+.newthread-title{
+	width:630px;
 }
 
 /* Footer */

@@ -7,16 +7,16 @@ var Interface = {
 	currentContentPanel: 0,
 	
 	// The animation to change content panels.
-	contentPanelTransition: function(changeto){
-		if(this.currentContentPanel != changeto){
-			this.contentPanelTransitionEffect('#contentpanel-'+this.currentContentPanel,'#contentpanel-'+changeto);
+	contentPanelTransition: function(changeto,changes){
+		if(this.currentContentPanel != changeto || changeto == 1){
+			this.contentPanelTransitionEffect('#contentpanel-'+this.currentContentPanel,'#contentpanel-'+changeto,changes);
 			this.currentContentPanel = changeto;
 		}
 	},
 	
-	contentPanelTransitionEffect: function(a,b){
+	contentPanelTransitionEffect: function(a,b,changes){
 		// $('.powered-by').fadeOut();
-		Effects.Transitions.fade(a,b, function(){
+		Effects.Transitions.fade(a,b,500,changes, function(){
 			// $('.powered-by').fadeIn();
 		});
 	},
@@ -44,6 +44,11 @@ var Interface = {
 	// Show the register form dialog.
 	showRegisterForm: function(){
 		$("#register-dialog").dialog('open');
+	},
+	
+	// Show the new thread dialog
+	showNewThreadForm: function(){
+		$("#newthread-dialog").dialog('open');
 	},
 	
 	// Show the help page.

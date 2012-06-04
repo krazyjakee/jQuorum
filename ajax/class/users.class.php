@@ -65,6 +65,11 @@
 			setcookie('ssid','', false, "/", false);
 		}
 		
+		function getUserData($id){
+			$result = mysql_query("select * from users where id = '$id' limit 1");
+			return mysql_fetch_assoc($result);
+		}
+		
 	}
 
 ?>

@@ -75,4 +75,28 @@ var AJAX = {
 		
 	},
 	
+	loadThreads: function(board,offset){
+		$.ajax({
+			url: forum_config['url']+'ajax/posts.php',
+			data: 'do=getthreads&board='+board+'&offset='+offset,
+			type: 'post',
+			success: function(json){
+				json = eval('('+json+')');
+				Threads.populateThreads(json);
+			}
+		});
+	},
+	
+	newThread: function(board,title,content){
+		$.ajax({
+			url: forum_config['url']+'ajax/posts.php',
+			data: 'do=newthread&board='+board+'&title='+title+'&content='+content,
+			type: 'post',
+			success: function(json){
+				Threads.showThreads(board);
+				$('#newthread-dialog').dialog('close');
+			}
+		});
+	}
+	
 }

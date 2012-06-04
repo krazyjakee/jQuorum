@@ -36,4 +36,32 @@
 	  
 		</form>
 	</div>
+	
+	<div id="newthread-dialog" title="New Thread">
+		<div id="newthread-tabs">
+			<ul>
+				<li><a href="#newthread-tabs-1">Write</a></li>
+				<li><a href="#newthread-tabs-2">Reference</a></li>
+				<li><a href="#newthread-tabs-3">Advanced</a></li>
+			</ul>
+			<div id="newthread-tabs-1">
+				<div class="writethread">
+					Title: <input id="newthread-title" type="text" class="text ui-corner-all jquorum-text-input newthread-title" />
+					<div class="ui-widget-header ui-corner-all">
+						<div class="buttonset">
+							<button id="newthread-boldbtn" /><span class="ui-button-icon-primary icon-bold"></span></button>
+							<button id="newthread-italicbtn" /><span class="ui-button-icon-primary icon-italic"></span></button>
+							<button id="newthread-underlinebtn" /><span class="ui-button-icon-primary icon-underline"></span></button>
+						</div>
+					</div>
+					<textarea id="newthread-text" class="text ui-corner-all jquorum-text-input"></textarea>
+				</div>
+				<button onclick="Threads.newThread()" style="float:right"><span class="ui-button-icon-primary icon-file"></span> Post</button>
+				<button onclick="" style="float:right"><span class="ui-button-icon-primary icon-save"></span> Save</button>
+				<button onclick="" style="float:right"><span class="ui-button-icon-primary icon-remove"></span> Cancel</button>
+			</div>
+			<div id="newthread-tabs-2"></div>
+			<div id="newthread-tabs-3"></div>
+		</div>
+	</div>
 </div>

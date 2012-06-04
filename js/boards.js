@@ -1,6 +1,7 @@
 var Boards = {
 	
 	loadedBoards: [],
+	currentBoard: 0,
 	
 	populateBoardPanels: function(parent){
 		$('.loader').hide();
@@ -30,7 +31,9 @@ var Boards = {
 					}
 				}
 				
-				$('#boardpanel-'+board.parent+'-content ul').append('<li class="ui-widget-content subboard-title" data="'+board.id+'"><div class="subboard-right">Threads: '+board.threads+' | Posts: '+board.posts+' | Views: '+board.views+'</div><span class="ui-icon ui-icon-document"></span>'+board.name+'<div id="subboard-li-'+board.id+'"></div></li>');
+				var icon = 'icon-file';
+				if(board.locked == 1){ icon = 'icon-lock'; }
+				$('#boardpanel-'+board.parent+'-content ul').append('<li class="ui-widget-content subboard-title" data="'+board.id+'"><div class="subboard-right">Threads: '+board.threads+' | Posts: '+board.posts+' | Views: '+board.views+'</div><span class="'+icon+'"></span> '+board.name+'<div id="subboard-li-'+board.id+'"></div></li>');
 			}
 		});
 		
@@ -38,7 +41,8 @@ var Boards = {
 			$('#boardpanel-'+board+'-content ul').selectable({
 				selected: function(event, ui) {
 					Threads.showThreads($(ui.selected).attr('data'));
-				}
+				},
+				cancel: 'a'
    			});
 		});
 		
@@ -56,7 +60,7 @@ var Boards = {
 				});
 				
 				if(isSubBoard == false){
-					$('#subboard-li-'+board.parent).append('<a href="#">'+board.name+'</a> ');
+					$('#subboard-li-'+board.parent).append('<a href="#" onclick="Threads.showThreads('+board.id+')">'+board.name+'</a> ');
 				}
 			}
 		});
