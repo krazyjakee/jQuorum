@@ -4,7 +4,7 @@
 	include '../ajax/class/users.class.php';
 	$users = new Users();
 	if(($userdata = $users->qlogin()) != false){
-		if(strpos($userdata['userflags'],"a")){
+		if(strpos($userdata['userflags'],"a") || $userdata['userflags'] == "a"){
 ?>
 <!doctype html>
 <html>
@@ -19,6 +19,10 @@
 	<script type="text/javascript" src="js/init.js"></script>
 	<script type="text/javascript" src="../js/interface.js"></script>
 	<script type="text/javascript" src="../js/ajax.js"></script>
+	<script type="text/javascript">
+		var hasBodyStyle = <?php if($forum_settings['bodycss']){ echo 'true'; }else{ echo 'false'; } ?>;
+		var forumRoot = '<?php echo $forum_settings['url']; ?>';
+	</script>
 </head>
 <body>
 	<div id="header" class="ui-widget-header ui-corner-top overall-header">

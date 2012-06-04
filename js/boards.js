@@ -30,12 +30,16 @@ var Boards = {
 					}
 				}
 				
-				$('#boardpanel-'+board.parent+'-content ul').append('<li class="ui-widget-content subboard-title"><div class="subboard-right">Threads: '+board.threads+' | Posts: '+board.posts+' | Views: '+board.views+'</div><span class="ui-icon ui-icon-document"></span>'+board.name+'<div id="subboard-li-'+board.id+'"></div></li>');
+				$('#boardpanel-'+board.parent+'-content ul').append('<li class="ui-widget-content subboard-title" data="'+board.id+'"><div class="subboard-right">Threads: '+board.threads+' | Posts: '+board.posts+' | Views: '+board.views+'</div><span class="ui-icon ui-icon-document"></span>'+board.name+'<div id="subboard-li-'+board.id+'"></div></li>');
 			}
 		});
 		
 		$.each(subBoards, function(index, board){
-			$('#boardpanel-'+board+'-content ul').selectable();
+			$('#boardpanel-'+board+'-content ul').selectable({
+				selected: function(event, ui) {
+					Threads.showThreads($(ui.selected).attr('data'));
+				}
+   			});
 		});
 		
 		$('.boardpanel-content ul li:first-child').addClass('ui-corner-top');

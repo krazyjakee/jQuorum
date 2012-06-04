@@ -10,7 +10,7 @@ $(window).load(function(){
 	
 	// Get style data and update the elements that jqueryui themes fail to style such as the body background.
 	var coreFontColor = $('.ui-widget-content:first').css('color');
-	if(hasBodyStyle){
+	if(forum_config['bodycss']){
 		$('html,body').addClass('bodycss');
 		coreFontColor = $('body').css('color');
 	}else{

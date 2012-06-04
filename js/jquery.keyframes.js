@@ -104,13 +104,13 @@ $.fn.playKeyframe = function(frameOptions, callback){
 	
 	var _this = this;
 	if(repeat != 'infinite'){
-		if(callback != null){
-			$(this).data('keyframeTimer', setTimeout(callback, (duration + delay) * repeat));
+		if(callback){
+			$(this).data('keyframeTimer', setTimeout(callback, (duration + delay + 100) * repeat));
 		}
-		setTimeout(function(){ $(_this).data('keyframe',false); }, (duration + delay) * repeat);
+		setTimeout(function(){ $(_this).data('keyframe',false); }, (duration + delay + 100) * repeat);
 	}else{
-		if(callback != null){
-			$(_this).data('keyframeTimer', setTimeout(function(){ callback(); $(_this).data('keyframeTimer', setInterval(callback, duration)); }, duration + delay));
+		if(callback){
+			$(_this).data('keyframeTimer', setTimeout(function(){ callback(); $(_this).data('keyframeTimer', setInterval(callback, duration)); }, duration + delay + 100));
 		}
 	}
 	

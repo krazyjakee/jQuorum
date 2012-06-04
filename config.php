@@ -1,5 +1,4 @@
 <?php
-
 	$host = "localhost";
 	$user = "root";
 	$pass = "root";
@@ -16,4 +15,15 @@
 		$forum_settings[$line['setting']] = $line['value'];
 	}
 	
+	// header("Access-Control-Allow-Origin: *");
+	header("Access-Control-Allow-Origin: http://www.".$forum_settings['domain']);
+	
+	/* 
+		DO NOT EDIT BELOW THIS LINE
+		________________________________ 
+	*/
+	
+	function loadPlugins(){
+		
+	}
 ?>

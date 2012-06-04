@@ -3,6 +3,24 @@ var Interface = {
 	// A variable to hold all created panels.
 	contentPanels: [],
 	
+	// The current showing content panel id.
+	currentContentPanel: 0,
+	
+	// The animation to change content panels.
+	contentPanelTransition: function(changeto){
+		if(this.currentContentPanel != changeto){
+			this.contentPanelTransitionEffect('#contentpanel-'+this.currentContentPanel,'#contentpanel-'+changeto);
+			this.currentContentPanel = changeto;
+		}
+	},
+	
+	contentPanelTransitionEffect: function(a,b){
+		// $('.powered-by').fadeOut();
+		Effects.Transitions.fade(a,b, function(){
+			// $('.powered-by').fadeIn();
+		});
+	},
+	
 	// Used to clear the text of the login text boxes on click.
 	loginInputClick: function(elem){
 		$(elem).val('');
@@ -10,7 +28,7 @@ var Interface = {
 	
 	// Show the main index.
 	showHome: function(){
-		
+		this.contentPanelTransition(0)
 	},
 	
 	// Show a pages content.

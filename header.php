@@ -14,12 +14,15 @@
 	<link rel="stylesheet" href="css/jquorum.css" type="text/css" />
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="js/jquery.keyframes.js"></script>
 	<script type="text/javascript" src="js/init.js"></script>
 	<script type="text/javascript" src="js/interface.js"></script>
 	<script type="text/javascript" src="js/boards.js"></script>
+	<script type="text/javascript" src="js/threads.js"></script>
+	<script type="text/javascript" src="js/effects.js"></script>
 	<script type="text/javascript" src="js/ajax.js"></script>
 	<script type="text/javascript">
-		var hasBodyStyle = <?php if($forum_settings['bodycss']){ echo 'true'; }else{ echo 'false'; } ?>;
+		var forum_config = <?php echo json_encode($forum_settings); ?>;
 	</script>
 	<style>
 	.bodycss{ <?php echo $forum_settings['bodycss']; ?>	}
@@ -53,9 +56,7 @@
 	</div>
 	
 	<ul id="header-breadcrumbs" class="header-breadcrumbs body-links">
-		<li><a href="#"><div class="ui-icon ui-icon-home"></div></a></li>
-		<li><div class="ui-icon ui-icon-arrow-1-e"></div><a href="">Announcements</a></li>
-		<li><div class="ui-icon ui-icon-arrow-1-e"></div><a href="">Project News</a></li>
+		<li><a href="#"><div class="ui-icon ui-icon-home" onclick="Interface.showHome()"></div></a></li>
 	</ul>
 	
 	<ul id="header-links" class="header-links body-links">

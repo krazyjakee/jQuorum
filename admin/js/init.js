@@ -31,7 +31,7 @@ var Admin = {
 		var description = $('#new-section-description').val();
 		$('#forums-loader').show();
 		$.ajax({
-			url: 'ajax/boards.php',
+			url: '../ajax/boards.php',
 			data: 'do=addboard&name='+name+'&description='+description+'&parent='+Admin.currentParent,
 			type: 'post',
 			success: function(board){
@@ -46,7 +46,7 @@ var Admin = {
 	loadBoards: function(callback){
 		Admin.loadedBoards = [];
 		$.ajax({
-			url: 'ajax/boards.php',
+			url: '../ajax/boards.php',
 			data: 'do=loadboards',
 			type: 'post',
 			success: function(json){

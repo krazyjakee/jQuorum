@@ -2,7 +2,7 @@ var AJAX = {
 	
 	login: function(username,password){
 		$.ajax({
-			url: '/ajax/users.php',
+			url: forum_config['url']+'ajax/users.php',
 			data: 'do=login&username='+username+'&password='+password,
 			type: 'post',
 			success: function(json){
@@ -18,7 +18,7 @@ var AJAX = {
 	
 	qlogin: function(){
 		$.ajax({
-			url: '/ajax/users.php',
+			url: forum_config['url']+'ajax/users.php',
 			data: 'do=qlogin',
 			type: 'post',
 			success: function(json){
@@ -32,7 +32,7 @@ var AJAX = {
 	
 	logout: function(){
 		$.ajax({
-			url: '/ajax/users.php',
+			url: forum_config['url']+'ajax/users.php',
 			data: 'do=logout',
 			type: 'post'
 		});
@@ -40,7 +40,7 @@ var AJAX = {
 	
 	register: function(username,password,email,referrer){
 		$.ajax({
-			url: '/ajax/users.php',
+			url: forum_config['url']+'ajax/users.php',
 			data: 'do=register&username='+username+'&password='+password+'&email='+email+'&referrer='+referrer,
 			type: 'post',
 			success: function(json){
@@ -49,7 +49,7 @@ var AJAX = {
 						case 'email': alert('The email is invalid.'); break;
 						case 'username': alert('The username is taken.'); break;
 						default: json = eval('('+json+')');
-						Interface.doLogin(json); break;
+						Interface.doLogin(json); $("#register-dialog").dialog('close'); break;
 					}
 				}else{
 					alert('Register error!');
@@ -61,7 +61,7 @@ var AJAX = {
 	loadBoards: function(callback){
 		Boards.loadedBoards = [];
 		$.ajax({
-			url: 'ajax/boards.php',
+			url: forum_config['url']+'ajax/boards.php',
 			data: 'do=loadboards',
 			type: 'post',
 			success: function(json){
