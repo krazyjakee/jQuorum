@@ -93,7 +93,8 @@ var AJAX = {
 			data: 'do=newthread&board='+board+'&title='+title+'&content='+content,
 			type: 'post',
 			success: function(json){
-				Threads.showThreads(board);
+				$('#threads-container').remove();
+				Threads.loadThreads();
 				$('#newthread-dialog').dialog('close');
 			}
 		});

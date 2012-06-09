@@ -70,6 +70,17 @@
 			return mysql_fetch_assoc($result);
 		}
 		
+		function hasPermission($group,$flag){
+			$result = mysql_query("select * from groups where id = $group limit 1");
+			$permissions = mysql_fetch_assoc($result);
+			$permissions = json_decode($permissions['permissions']);
+			if($permissions->$flag == 1){
+				return true;
+			}else{
+				return false;
+			}
+		}
+		
 	}
 
 ?>

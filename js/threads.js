@@ -56,8 +56,6 @@ var Threads = {
 			$('#board-markread').button({ icons: { primary: 'ui-icon-check' } });
 			
 			// Insert threads container and populate.
-			$('#contentpanel-1-content').append('<div id="threads-container" class="boardpanel-content"><div class="loader"></div><ul></ul></div>');
-			
 			Threads.loadThreads();
 		});
 	},
@@ -70,6 +68,7 @@ var Threads = {
 	},
 	
 	loadThreads: function(){
+		$('#contentpanel-1-content').append('<div id="threads-container" class="boardpanel-content"><div class="loader"></div><ul></ul></div>');
 		var board = Boards.currentBoard;
 		var offset = Threads.threadOffset;
 		AJAX.loadThreads(board,offset);
@@ -82,7 +81,7 @@ var Threads = {
 		});
 		$('#threads-container ul').selectable({
 			selected: function(event, ui){
-				Threads.showThread($(ui.selected).attr('data'));
+				Posts.showThread($(ui.selected).attr('data'));
 			},
 			cancel: 'a'
 		});

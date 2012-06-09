@@ -41,8 +41,7 @@
 		<div id="newthread-tabs">
 			<ul>
 				<li><a href="#newthread-tabs-1">Write</a></li>
-				<li><a href="#newthread-tabs-2">Reference</a></li>
-				<li><a href="#newthread-tabs-3">Advanced</a></li>
+				<li><a href="#newthread-tabs-2">Advanced</a></li>
 			</ul>
 			<div id="newthread-tabs-1">
 				<div class="writethread">
@@ -61,7 +60,6 @@
 				<button onclick="" style="float:right"><span class="ui-button-icon-primary icon-remove"></span> Cancel</button>
 			</div>
 			<div id="newthread-tabs-2"></div>
-			<div id="newthread-tabs-3"></div>
 		</div>
 	</div>
 </div>

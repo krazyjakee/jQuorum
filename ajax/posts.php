@@ -5,7 +5,7 @@
 	$users = new Users();
 	$user = $users->qlogin();
 	
-	if(isset($_POST['do']) && $user != false){
+	if(isset($_POST['do'])){
 		switch($_POST['do']){
 			case "newthread":
 				$board = mysql_escape_string($_POST['board']);
@@ -19,6 +19,7 @@
 			case "getposts": break;
 				$parent = mysql_escape_string($_POST['parent']);
 				$offset = mysql_escape_string($_POST['offset']);
+				
 				$result = mysql_query("select * from posts where parent = $parent || id = $parent && enabled = 1 order by created desc limit 10 offset $offset");
 				$posts = array();
 				while(($line = mysql_fetch_assoc($result))){

@@ -4,7 +4,7 @@
 	include '../ajax/class/users.class.php';
 	$users = new Users();
 	if(($userdata = $users->qlogin()) != false){
-		if(strpos($userdata['userflags'],"a") || $userdata['userflags'] == "a"){
+		if($users->hasPermission($userdata['group'],"admin")){
 ?>
 <!doctype html>
 <html>
@@ -22,6 +22,7 @@
 	<script type="text/javascript">
 		var hasBodyStyle = <?php if($forum_settings['bodycss']){ echo 'true'; }else{ echo 'false'; } ?>;
 		var forumRoot = '<?php echo $forum_settings['url']; ?>';
+		var forum_config = <?php echo json_encode($forum_settings); ?>;
 	</script>
 </head>
 <body>

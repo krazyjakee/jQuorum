@@ -20,6 +20,7 @@
 	<script type="text/javascript" src="js/interface.js"></script>
 	<script type="text/javascript" src="js/boards.js"></script>
 	<script type="text/javascript" src="js/threads.js"></script>
+	<script type="text/javascript" src="js/posts.js"></script>
 	<script type="text/javascript" src="js/effects.js"></script>
 	<script type="text/javascript" src="js/ajax.js"></script>
 	<script type="text/javascript">

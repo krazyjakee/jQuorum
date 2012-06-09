@@ -20,6 +20,12 @@ html,body{
 	border-right:1px dotted grey;
 	font-size:12px;
 }
+.tab-content td:first-child ul li{
+	cursor: pointer;
+}
+.tab-content td:first-child ul li:hover{
+	text-decoration: underline;
+}
 .adminpage{
 	padding:20px;
 }
@@ -41,4 +47,8 @@ html,body{
 }
 #add-section-dialog input[type='text'], #add-board-dialog input[type='text']{
 	width:60%;
+}
+#admin-editpermissions-groups li, #admin-editpermissions-permissions li, #admin-editpermissions-boards li{
+	padding:5px;
+	cursor:pointer;
 }
