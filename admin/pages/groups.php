@@ -58,6 +58,11 @@
 </div>
 
 <script type="text/javascript">
+	var admin_forum_groups = <?php echo json_encode($groups); ?>;
+	var admin_forum_boards = <?php echo json_encode($boards); ?>;
+	var admin_selected_permissions = [];
+	var admin_selected_boards = [];
+	
 	$('#groups-accordion').accordion({
 		disabled:true,
 		autoHeight:false
@@ -79,6 +84,12 @@
 		},
 		unselecting: function(event,ui){
 			$(ui.unselecting).removeClass('ui-state-hover');
+		},
+		stop: function(){
+			admin_selected_permissions = [];
+			$(".ui-selected", this).each(function(){
+				admin_selected_permissions.push($(this).attr('data'));
+			});
 		}
 	});
 	$('#admin-editpermissions-boards').selectable({
@@ -90,9 +101,12 @@
 		},
 		unselecting: function(event,ui){
 			$(ui.unselecting).removeClass('ui-state-hover');
+		},
+		stop: function(){
+			admin_selected_boards = [];
+			$(".ui-selected", this).each(function(){
+				admin_selected_boards.push($(this).attr('data'));
+			});
 		}
 	});
-	
-	var admin_forum_groups = <?php echo json_encode($groups); ?>;
-	var admin_forum_boards = <?php echo json_encode($boards); ?>;
 </script>

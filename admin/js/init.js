@@ -90,6 +90,12 @@ var Admin = {
 				Admin.loadBoard(board.parent);
 			}
 		});
+	},
+	
+	saveGroupPermissions: function(){
+		$.each(admin_selected_boards, function(index, board){
+			
+		});
 	}
 	
 }
