@@ -77,11 +77,11 @@ var Threads = {
 	populateThreads: function(json){
 		$('.loader').hide();
 		$.each(json, function(index, thread){
-			$('#threads-container ul').append('<li class="ui-widget-content thread-title" data="'+thread.id+'"><div class="thread-title-right">Replies: '+thread.replies+' | Views: '+thread.views+' | By: <a href="#">'+thread.author.username+'</a></div><span class="icon-file"></span> '+thread.title+'<div><small>by <a href="#">'+thread.author.username+'</a> on '+thread.lastedited+'</small></div></li>');
+			$('#threads-container ul').append('<li class="ui-widget-content thread-title" data="'+thread.id+'" locked="'+thread.locked+'"><div class="thread-title-right">Replies: '+thread.replies+' | Views: '+thread.views+' | By: <a href="#">'+thread.author.username+'</a></div><span class="icon-file"></span> '+thread.title+'<div><small>by <a href="#">'+thread.author.username+'</a> on '+thread.lastedited+'</small></div></li>');
 		});
 		$('#threads-container ul').selectable({
 			selected: function(event, ui){
-				Posts.showThread($(ui.selected).attr('data'));
+				Posts.showThread($(ui.selected).attr('data'),$(ui.selected).attr('locked'));
 			},
 			cancel: 'a'
 		});

@@ -3,6 +3,7 @@ jQuery.fn.exists = function(){return this.length>0;}
 $(function(){
 	$("#register-dialog").dialog({modal: true, autoOpen: false, width: 600, draggable: false, resizable: false, show: { effect: 'drop', direction: 'up' }, hide: { effect: 'drop', direction: 'up' }});
 	$("#newthread-dialog").dialog({modal: true, autoOpen: false, width: 750, draggable: false, resizable: false, show: { effect: 'drop', direction: 'up' }, hide: { effect: 'drop', direction: 'up' }});
+	$("#newpost-dialog").dialog({modal: true, autoOpen: false, width: 750, draggable: false, resizable: false, show: { effect: 'drop', direction: 'up' }, hide: { effect: 'drop', direction: 'up' }});
 });
 
 var loaderHTML = '<div class="loader"><img src="img/loader.gif" alt="loading..." /></div>';
@@ -26,7 +27,7 @@ $(window).load(function(){
 	$('.checkbutton').button(); $('.buttonset').buttonset();
 	
 	// Perform a login request.
-	$('#login-form').submit(function(){
+	$('#login-form').unbind('submit').bind('submit',function() {
 		var username = $('#login-form input[name="username"]').val();
 		var password = $('#login-form input[name="password"]').val();
 		AJAX.login(username,password);
@@ -34,7 +35,7 @@ $(window).load(function(){
 	});
 	
 	// Perform a register request.
-	$('#register-form').submit(function(){
+	$('#register-form').unbind('submit').bind('submit',function() {
 		var username = $('#register-form input[name="register_username"]').val();
 		var password = $('#register-form input[name="register_password1"]').val();
 		var password2 = $('#register-form input[name="register_password2"]').val();
@@ -55,9 +56,6 @@ $(window).load(function(){
 		return false;
 	});
 	
-	// After the page has loaded for the first time, perform a quick login.
-	AJAX.qlogin();
-	
 	Interface.newContentPanel({	name: 'Main Index',	id: 0 });
 	Interface.newContentPanel({	name: '',	id: 1 });
 	Interface.newContentPanel({	name: '',	id: 2 });
@@ -65,9 +63,10 @@ $(window).load(function(){
 	$('#contentpanel-0').show();
 	$('#contentpanel-0-content').html(loaderHTML);
 	
-	// Load boards and populate main index.
-	AJAX.loadBoards(function(){ Boards.populateBoardPanels(0); });
-	
 	$('#newthread-tabs').tabs();
+	$('#newpost-tabs').tabs();
+	
+	// After the page has loaded for the first time, perform a quick login.
+	AJAX.qlogin();
 
 });

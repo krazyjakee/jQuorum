@@ -62,4 +62,30 @@
 			<div id="newthread-tabs-2"></div>
 		</div>
 	</div>
+	
+	<div id="newpost-dialog" title="New Post">
+		<div id="newpost-tabs">
+			<ul>
+				<li><a href="#newpost-tabs-1">Write</a></li>
+				<li><a href="#newpost-tabs-2">Advanced</a></li>
+			</ul>
+			<div id="newpost-tabs-1">
+				<div class="writethread">
+					Title:<b id="newpost-title"></b>
+					<div class="ui-widget-header ui-corner-all">
+						<div class="buttonset">
+							<button id="newpost-boldbtn" /><span class="ui-button-icon-primary icon-bold"></span></button>
+							<button id="newpost-italicbtn" /><span class="ui-button-icon-primary icon-italic"></span></button>
+							<button id="newpost-underlinebtn" /><span class="ui-button-icon-primary icon-underline"></span></button>
+						</div>
+					</div>
+					<textarea id="newthread-text" class="text ui-corner-all jquorum-text-input"></textarea>
+				</div>
+				<button onclick="Threads.newPost()" style="float:right"><span class="ui-button-icon-primary icon-file"></span> Post</button>
+				<button onclick="" style="float:right"><span class="ui-button-icon-primary icon-save"></span> Save</button>
+				<button onclick="" style="float:right"><span class="ui-button-icon-primary icon-remove"></span> Cancel</button>
+			</div>
+			<div id="newpost-tabs-2"></div>
+		</div>
+	</div>
 </div>

@@ -25,6 +25,8 @@ var AJAX = {
 				if(json != ''){
 					json = eval('('+json+')');
 					Interface.doLogin(json);
+				}else{
+					AJAX.loadBoards(function(){ Boards.populateBoardPanels(0); });
 				}
 			}
 		});
@@ -34,7 +36,8 @@ var AJAX = {
 		$.ajax({
 			url: forum_config['url']+'ajax/users.php',
 			data: 'do=logout',
-			type: 'post'
+			type: 'post',
+			success: function(){ AJAX.loadBoards(function(){ Boards.populateBoardPanels(0); }); }
 		});
 	},
 	
@@ -96,6 +99,18 @@ var AJAX = {
 				$('#threads-container').remove();
 				Threads.loadThreads();
 				$('#newthread-dialog').dialog('close');
+			}
+		});
+	},
+	
+	getPosts: function(id,offset,callback){
+		$.ajax({
+			url: forum_config['url']+'ajax/posts.php',
+			type: 'post',
+			data: 'do=getposts&parent='+id+'&offset='+offset,
+			success: function(json){
+				json = eval('('+json+')');
+				if(callback){ callback(json); }
 			}
 		});
 	}

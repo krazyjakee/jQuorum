@@ -4,7 +4,7 @@
 	include '../ajax/class/users.class.php';
 	$users = new Users();
 	if(($userdata = $users->qlogin()) != false){
-		if($users->hasPermission($userdata['group'],"admin")){
+		if($userdata['usergroup'] == 0){
 ?>
 <!doctype html>
 <html>

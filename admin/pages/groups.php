@@ -38,7 +38,7 @@
 				<small>The permissions you chose above will be enabled for the group on the boards you select below.</small>
 				<ul id="admin-editpermissions-boards">
 					<?php
-						// TOFIX: Needs to be ordered correctly.
+						// TOFIX: Needs to be ordered correctly with parent boards on top of their child boards.
 						$result = mysql_query("select * from boards order by sortorder");
 						$boards = array();
 						while(($line = mysql_fetch_assoc($result)) != null){
@@ -52,7 +52,7 @@
 					?>
 				</ul>
 			</p>
-			<p><button onclick="">Save Permissions</button></p>
+			<p><button onclick="Admin.saveGroupPermissions()">Save Permissions</button></p>
 		</div>
 	</div>
 </div>
@@ -60,6 +60,8 @@
 <script type="text/javascript">
 	var admin_forum_groups = <?php echo json_encode($groups); ?>;
 	var admin_forum_boards = <?php echo json_encode($boards); ?>;
+	var admin_selected_group = [];
+	var admin_selected_group_permissions = {};
 	var admin_selected_permissions = [];
 	var admin_selected_boards = [];
 	
@@ -70,7 +72,16 @@
 	$('#admin-editpermissions-groups li').click(function(){
 		$('#admin-editpermissions-groups li').removeClass('ui-state-hover');
 		$(this).addClass('ui-state-hover');
-		var adminSelectedGroupId = $(this).attr('data');
+		admin_selected_group = $(this).attr('data');
+		$.each(admin_forum_groups, function(index, group){
+			if(group.id == admin_selected_group){
+				if(group.permissions){
+					admin_selected_group_permissions = { perms: eval('('+group.permissions+')') };
+				}else{
+					admin_selected_group_permissions = {};
+				}
+			}
+		});
 		$('#groups-accordion h3:eq(1)').find('a').html('Permissions for ' + $(this).html());
 		$('#groups-accordion').accordion('enable');
 		$('#groups-accordion').accordion('activate',1);

@@ -1,10 +1,10 @@
 <?php
 
 	include "../../config.php";
-	include '../ajax/class/users.class.php';
+	include '../../ajax/class/users.class.php';
 	$users = new Users();
 	if(($userdata = $users->qlogin()) != false){
-		if(strpos($userdata['userflags'],"a")){
+		if($userdata['usergroup'] == 0){
 			if(isset($_POST['do'])){
 				switch($_POST['do']){
 					case "loadboards":

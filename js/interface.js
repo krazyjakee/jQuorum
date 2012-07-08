@@ -51,6 +51,11 @@ var Interface = {
 		$("#newthread-dialog").dialog('open');
 	},
 	
+	// Show the new post dialog
+	showNewPostForm: function(){
+		$("#newpost-dialog").dialog('open');
+	},
+	
 	// Show the help page.
 	showHelpPage: function(){
 	
@@ -61,6 +66,7 @@ var Interface = {
 		$('.header-prelogin').hide();
 		$('.header-postlogin').show();
 		$('#header-username').html(userData.username);
+		AJAX.loadBoards(function(){ Boards.populateBoardPanels(0); });
 	},
 	
 	// Update the interface and perform a logout request.

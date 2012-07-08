@@ -22,7 +22,7 @@
 				$username = mysql_escape_string($_COOKIE['username']);
 				$ssid = mysql_escape_string($_COOKIE['ssid']);
 				$result = mysql_query("select * from users where username = '$username' and ssid = '$ssid' limit 1");
-				if(mysql_num_rows($result) > 0){
+				if(mysql_num_rows($result)){
 					$userdata = mysql_fetch_assoc($result);
 					return $userdata;
 				}else{
@@ -65,20 +65,26 @@
 			setcookie('ssid','', false, "/", false);
 		}
 		
-		function getUserData($id){
-			$result = mysql_query("select * from users where id = '$id' limit 1");
+		function getUserData($id,$cols){
+			$result = mysql_query("select $cols from users where id = $id limit 1");
 			return mysql_fetch_assoc($result);
 		}
 		
-		function hasPermission($group,$flag){
+		function hasPermission($group,$bid,$flag){
 			$result = mysql_query("select * from groups where id = $group limit 1");
 			$permissions = mysql_fetch_assoc($result);
-			$permissions = json_decode($permissions['permissions']);
-			if($permissions->$flag == 1){
+			$permissions = json_decode($permissions['permissions'],true);
+			if($group == 0){
 				return true;
-			}else{
-				return false;
 			}
+			else if(isset($permissions[$bid])){
+				foreach($permissions[$bid] as $p){
+					if($p == $flag){
+						return true;
+					}
+				}
+			}
+			return false;
 		}
 		
 	}

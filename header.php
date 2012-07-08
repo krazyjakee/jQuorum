@@ -25,6 +25,7 @@
 	<script type="text/javascript" src="js/ajax.js"></script>
 	<script type="text/javascript">
 		var forum_config = <?php echo json_encode($forum_settings); ?>;
+		var forum_groups = <?php echo json_encode($forum_groups); ?>;
 	</script>
 	<style>
 	.bodycss{ <?php echo $forum_settings['bodycss']; ?>	}

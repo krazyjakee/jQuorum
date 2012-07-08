@@ -4,6 +4,7 @@ var Boards = {
 	currentBoard: 0,
 	
 	populateBoardPanels: function(parent){
+		$('#contentpanel-'+parent+'-content').html('');
 		$('.loader').hide();
 		var subBoards = [];
 		

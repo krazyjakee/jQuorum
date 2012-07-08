@@ -93,8 +93,22 @@ var Admin = {
 	},
 	
 	saveGroupPermissions: function(){
-		$.each(admin_selected_boards, function(index, board){
-			
+		var permissions = admin_selected_group_permissions;
+		$.each(admin_selected_boards, function(index,board){
+			var newperms = [];
+			for(var attrname in permissions) { newperms[attrname] = permissions[attrname]; }
+			$.each(admin_selected_permissions, function(index, perms){
+				newperms.push(perms);
+			});
+			permissions[board] = newperms;
+		});
+		$.ajax({
+			url: 'ajax/groups.php',
+			type: 'post',
+			data: 'do=setpermissions&group='+admin_selected_group+'&perms='+JSON.stringify(permissions),
+			complete: function(json){
+				alert('Permissions saved!');
+			}
 		});
 	}
 	

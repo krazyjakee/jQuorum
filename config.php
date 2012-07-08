@@ -15,6 +15,12 @@
 		$forum_settings[$line['setting']] = $line['value'];
 	}
 	
+	$result = mysql_query("select * from groups");
+	$forum_groups = array();
+	while(($line = mysql_fetch_assoc($result)) != null){
+		array_push($forum_groups,$line);
+	}
+	
 	// header("Access-Control-Allow-Origin: *");
 	header("Access-Control-Allow-Origin: http://www.".$forum_settings['domain']);
 	
