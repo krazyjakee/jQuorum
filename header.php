@@ -16,16 +16,52 @@
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="js/jquery.keyframes.js"></script>
-	<script type="text/javascript" src="js/init.js"></script>
 	<script type="text/javascript" src="js/interface.js"></script>
 	<script type="text/javascript" src="js/boards.js"></script>
 	<script type="text/javascript" src="js/threads.js"></script>
 	<script type="text/javascript" src="js/posts.js"></script>
+	<script type="text/javascript" src="js/bbcode.js"></script>
+	<script type="text/javascript" src="js/caret.js"></script>
 	<script type="text/javascript" src="js/effects.js"></script>
 	<script type="text/javascript" src="js/ajax.js"></script>
+	<script type="text/javascript" src="js/init.js"></script>
+<?php
+	if($handle1 = opendir('plugins')){
+		while (false !== ($folder = readdir($handle1))) {
+			if(is_dir("plugins/".$folder) && $folder != "." && $folder != ".."){
+				if($handle2 = opendir("plugins/".$folder)){
+			        while (false !== ($plugin = readdir($handle2))) {
+			      		if(substr($plugin,strlen($plugin) - 2) == "js"){
+				      		echo '<script type="text/javascript" src="plugins/'.$folder.'/'.$plugin.'"></script>';
+			      		}
+			        }
+		        }
+	        }
+	    }
+    }
+?>
 	<script type="text/javascript">
 		var forum_config = <?php echo json_encode($forum_settings); ?>;
 		var forum_groups = <?php echo json_encode($forum_groups); ?>;
+<?php
+include 'ajax/class/users.class.php';
+$user = Users::qlogin();
+$forum_usergroup_permissions = "admin";
+if($user['usergroup'] != 0){
+	foreach($forum_groups as $fg){
+		if($user){
+			if($fg['id'] == $user['usergroup']){
+				$forum_usergroup_permissions = $fg['permissions'];
+			}
+		}else{
+			if($fg['id'] == 0){
+				$forum_usergroup_permissions = $fg['permissions'];
+			}
+		}
+	}
+}
+?>
+		var forum_userpermissions = <?php echo $forum_usergroup_permissions; ?>;
 	</script>
 	<style>
 	.bodycss{ <?php echo $forum_settings['bodycss']; ?>	}

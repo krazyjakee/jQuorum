@@ -1,9 +1,11 @@
 jQuery.fn.exists = function(){return this.length>0;}
+var forum_userdata = {};
 
 $(function(){
 	$("#register-dialog").dialog({modal: true, autoOpen: false, width: 600, draggable: false, resizable: false, show: { effect: 'drop', direction: 'up' }, hide: { effect: 'drop', direction: 'up' }});
 	$("#newthread-dialog").dialog({modal: true, autoOpen: false, width: 750, draggable: false, resizable: false, show: { effect: 'drop', direction: 'up' }, hide: { effect: 'drop', direction: 'up' }});
 	$("#newpost-dialog").dialog({modal: true, autoOpen: false, width: 750, draggable: false, resizable: false, show: { effect: 'drop', direction: 'up' }, hide: { effect: 'drop', direction: 'up' }});
+	$("#editpost-dialog").dialog({modal: true, autoOpen: false, width: 750, draggable: false, resizable: false, show: { effect: 'drop', direction: 'up' }, hide: { effect: 'drop', direction: 'up' }});
 });
 
 var loaderHTML = '<div class="loader"><img src="img/loader.gif" alt="loading..." /></div>';
@@ -56,6 +58,8 @@ $(window).load(function(){
 		return false;
 	});
 	
+	BBCode.setup();
+	
 	Interface.newContentPanel({	name: 'Main Index',	id: 0 });
 	Interface.newContentPanel({	name: '',	id: 1 });
 	Interface.newContentPanel({	name: '',	id: 2 });
@@ -65,6 +69,7 @@ $(window).load(function(){
 	
 	$('#newthread-tabs').tabs();
 	$('#newpost-tabs').tabs();
+	$('#editpost-tabs').tabs();
 	
 	// After the page has loaded for the first time, perform a quick login.
 	AJAX.qlogin();

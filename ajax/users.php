@@ -17,7 +17,7 @@
 			case "qlogin":
 				$userdata = $users->qlogin();
 				if($userdata){
-					echo json_encode(array("username"=>$userdata['username'],"email"=>$userdata['email'],"referrer"=>$userdata['referrer'],"regdate"=>$userdata['regdate'],"lastlogin"=>$userdata['lastlogin']));
+					echo json_encode(array("id"=>$userdata['id'],"username"=>$userdata['username'],"email"=>$userdata['email'],"referrer"=>$userdata['referrer'],"regdate"=>$userdata['regdate'],"lastlogin"=>$userdata['lastlogin']));
 				}
 				break;
 			case "logout":

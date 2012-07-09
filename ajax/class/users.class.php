@@ -3,7 +3,7 @@
 	Class Users{
 		
 		function login($username,$password){
-			$result = mysql_query("select username,email,referrer,regdate,lastlogin from users where username = '$username' and password = '$password' limit 1");
+			$result = mysql_query("select id,username,email,referrer,regdate,lastlogin from users where username = '$username' and password = '$password' limit 1");
 			if(mysql_num_rows($result) > 0){
 				$ssid = sha1(date('Uu').$username.rand(0,10000));
 				setcookie("username", $username, false, "/", false);

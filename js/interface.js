@@ -11,6 +11,8 @@ var Interface = {
 		if(this.currentContentPanel != changeto || changeto == 1){
 			this.contentPanelTransitionEffect('#contentpanel-'+this.currentContentPanel,'#contentpanel-'+changeto,changes);
 			this.currentContentPanel = changeto;
+		}else{
+			changes();
 		}
 	},
 	
@@ -56,6 +58,37 @@ var Interface = {
 		$("#newpost-dialog").dialog('open');
 	},
 	
+	showEditPostForm: function(title,id){
+		if(title == ''){
+			$('#editpost-title-input').hide();
+			$('#editpost-title').show();
+		}else{
+			$('#editpost-title-input').show();
+			$('#editpost-title').hide();
+		}
+		var content = '';
+		$.each(Posts.currentPosts, function(index, post){
+			if(post.id == id){
+				content = post.content;
+				return false;
+			}
+		});
+		$('#editpost-text').val(content);
+		$("#editpost-dialog").dialog('open');
+	},
+	
+	hideNewThreadDialog: function(){
+		$('#newthread-dialog').dialog('close');
+	},
+	
+	hideNewPostDialog: function(){
+		$('#newpost-dialog').dialog('close');
+	},
+	
+	hideEditPostDialog: function(){
+		$('#editpost-dialog').dialog('close');
+	},
+	
 	// Show the help page.
 	showHelpPage: function(){
 	
@@ -63,6 +96,7 @@ var Interface = {
 	
 	// After login, update the interface with the user data argument.
 	doLogin: function(userData){
+		forum_userdata = userData;
 		$('.header-prelogin').hide();
 		$('.header-postlogin').show();
 		$('#header-username').html(userData.username);

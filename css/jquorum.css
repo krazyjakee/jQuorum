@@ -17,6 +17,12 @@ input{
 	color:black !important;
 	outline:none !important;
 }
+.jquorum-bbcode-input{
+	color:gray;
+	border:1px solid #ddd;
+	padding:3px;
+	font-family:'Open Sans', sans-serif;
+}
 button, input[type=submit], input[type=button]{
 	font-family:'Open Sans', sans-serif;
 	cursor:pointer;
@@ -131,6 +137,15 @@ button, input[type=submit], input[type=button]{
 	padding:5px;
 	font-size:11px;
 }
+.writethread .ui-widget-header{
+	height:36px;
+}
+.writethread .buttonset:first-child{
+	margin-top:-1px;
+}
+.writethread .buttonset{
+	float:left;
+}
 .content-container{
 	margin: 30px 10px 0px 10px;
 }
@@ -147,7 +162,7 @@ button, input[type=submit], input[type=button]{
 	padding: 0;
 }
 .boardpanel-content ul li{
-	padding: 10px;
+	padding: 15px;
 	font-size: 14px;
 	cursor:pointer;
 	font-weight:bold;
@@ -181,6 +196,8 @@ button, input[type=submit], input[type=button]{
 }
 .postcontent{
 	font-weight:normal;
+	cursor:default;
+	margin:10px;
 }
 
 /* Dialog */

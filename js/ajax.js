@@ -103,6 +103,18 @@ var AJAX = {
 		});
 	},
 	
+	newPost: function(thread,board,content){
+		$.ajax({
+			url: forum_config['url']+'ajax/posts.php',
+			data: 'do=newpost&board='+board+'&thread='+thread+'&content='+content,
+			type: 'post',
+			success: function(json){
+				Posts.showThread(thread);
+				$('#newpost-dialog').dialog('close');
+			}
+		});	
+	},
+	
 	getPosts: function(id,offset,callback){
 		$.ajax({
 			url: forum_config['url']+'ajax/posts.php',
@@ -113,6 +125,21 @@ var AJAX = {
 				if(callback){ callback(json); }
 			}
 		});
+	},
+	
+	hasPermission: function(board,flag){
+		if(forum_userpermissions != "admin"){
+			var hasperms = false;
+			$.each(forum_userpermissions[board], function(index, perms){
+				if(perms == flag){
+					hasperms = true;
+					return false;
+				}
+			});
+			return hasperms;
+		}else{
+			return true;
+		}
 	}
 	
 }

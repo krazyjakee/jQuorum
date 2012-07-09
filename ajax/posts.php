@@ -11,21 +11,28 @@
 				if($user){ $group = $user['group']; $id = $user['id']; }else{ $group = 1; $id = $REMOTE_ADDR; }
 				$board = mysql_escape_string($_POST['board']);
 				$title = mysql_escape_string($_POST['title']);
-				$content = mysql_escape_string($_POST['content']);
+				$content = mysql_escape_string(strip_tags($_POST['content']));
 				if($users->hasPermission($group,$board,"write")){
 					$now = date("Y-m-d H:i:s");
 					mysql_query("insert into posts (created,lastedited,title,content,author,board)values('$now','$now','$title','$content',$id,$board)");
 				}
 				break;
-			case "newpost": break;
+			case "newpost":
+				if($user){ $group = $user['group']; $id = $user['id']; }else{ $group = 1; $id = $REMOTE_ADDR; }
+				$thread = mysql_escape_string($_POST['thread']);
+				$content = mysql_escape_string(strip_tags($_POST['content']));
+				$board = mysql_escape_string($_POST['board']);
+				if($users->hasPermission($group,$board,"write")){
+					$now = date("Y-m-d H:i:s");
+					mysql_query("insert into posts (created,lastedited,content,author,board,parent)values('$now','$now','$content',$id,$board,$thread)");
+				}
+			break;
 			case "getposts":
-				include "class/bbcode.class.php";
 				$parent = mysql_escape_string($_POST['parent']);
 				$offset = mysql_escape_string($_POST['offset']);
-				$result = mysql_query("select * from posts where parent = $parent or id = $parent and enabled = 1 order by created desc limit 10 offset $offset") or die(mysql_error());
+				$result = mysql_query("select * from posts where parent = $parent or id = $parent and enabled = 1 order by created asc limit 10 offset $offset") or die(mysql_error());
 				$posts = array();
 				while(($line = mysql_fetch_assoc($result))){
-					$line['content'] = bbcodeParser($line['content']);
 					array_push($posts,$line);
 				}
 				$uposts = array();
@@ -42,7 +49,7 @@
 				$offset = mysql_escape_string($_POST['offset']);
 				if($user){ $group = $user['usergroup']; }else{ $group = 1; }
 				if($users->hasPermission($group,$board,"read")){
-					$result = mysql_query("select id,created,lastedited,title,author,attribute,replies,views,locked from posts where board = $board && enabled = 1 order by lastedited desc limit 50 offset $offset");
+					$result = mysql_query("select id,created,lastedited,title,author,attribute,replies,views,locked from posts where parent = 0 and board = $board && enabled = 1 order by lastedited desc limit 50 offset $offset");
 					$threads = array();
 					while(($line = mysql_fetch_assoc($result))){
 						$author = $users->getUserData($line['author'],"id,username");

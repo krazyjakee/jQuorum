@@ -1,3 +1,29 @@
+<?php
+	function dialog_buttonset($textarea){
+		return @"<div class=\"buttonset\">
+					<button id=\"".$textarea."-boldbtn\" onclick=\"BBCode.wrapSelectedText('#".$textarea."-text','[b]','[/b]')\"><span class=\"ui-button-icon-primary icon-bold\"></span></button>
+			
+					<button id=\"".$textarea."-italicbtn\" onclick=\"BBCode.wrapSelectedText('#".$textarea."-text','[i]','[/i]')\"><span class=\"ui-button-icon-primary icon-italic\"></span></button>
+					
+					<button id=\"".$textarea."-underlinebtn\" onclick=\"BBCode.wrapSelectedText('#".$textarea."-text','[u]','[/u]')\"><span class=\"ui-button-icon-primary icon-underline\"></span></button>
+				</div>
+				
+				<div class=\"buttonset\">
+					<button id=\"".$textarea."-alignleft\" onclick=\"BBCode.wrapSelectedText('#".$textarea."-text','[left]','[/left]')\"><span class=\"ui-button-icon-primary icon-align-left\"></span></button>
+					
+					<button id=\"".$textarea."-aligncenter\" onclick=\"BBCode.wrapSelectedText('#".$textarea."-text','[center]','[/center]')\"><span class=\"ui-button-icon-primary icon-align-center\"></span></button>
+					
+					<button id=\"".$textarea."-alignright\" onclick=\"BBCode.wrapSelectedText('#".$textarea."-text','[right]','[/right]')\"><span class=\"ui-button-icon-primary icon-align-right\"></span></button>
+				</div>
+				
+				<div class=\"buttonset\">
+					<button id=\"".$textarea."-list\" onclick=\"BBCode.wrapSelectedText('#".$textarea."-text','[list]','[/list]')\"><span class=\"ui-button-icon-primary icon-list-ul\"></span></button>
+					
+					<button id=\"".$textarea."-item\" onclick=\"BBCode.wrapSelectedText('#".$textarea."-text','[item]','[/item]')\"><span class=\"ui-button-icon-primary icon-certificate\"></span></button>
+				</div>
+				";
+	}
+?>
 <div class="dialogs-container">
 	<div id="register-dialog" title="Register">
 		<small>In order to register we need a few details from you. Please fill in the form below and we will email you instructions on how to activate your account.<br />Hover over anything you don't understand for more information.</small><br /><hr />
@@ -47,17 +73,13 @@
 				<div class="writethread">
 					Title: <input id="newthread-title" type="text" class="text ui-corner-all jquorum-text-input newthread-title" />
 					<div class="ui-widget-header ui-corner-all">
-						<div class="buttonset">
-							<button id="newthread-boldbtn" /><span class="ui-button-icon-primary icon-bold"></span></button>
-							<button id="newthread-italicbtn" /><span class="ui-button-icon-primary icon-italic"></span></button>
-							<button id="newthread-underlinebtn" /><span class="ui-button-icon-primary icon-underline"></span></button>
-						</div>
+						<? echo dialog_buttonset("newthread"); ?>
 					</div>
-					<textarea id="newthread-text" class="text ui-corner-all jquorum-text-input"></textarea>
+					<textarea id="newthread-text" class="text ui-corner-all jquorum-bbcode-input"></textarea>
 				</div>
 				<button onclick="Threads.newThread()" style="float:right"><span class="ui-button-icon-primary icon-file"></span> Post</button>
 				<button onclick="" style="float:right"><span class="ui-button-icon-primary icon-save"></span> Save</button>
-				<button onclick="" style="float:right"><span class="ui-button-icon-primary icon-remove"></span> Cancel</button>
+				<button onclick="Interface.hideNewThreadDialog()" style="float:right"><span class="ui-button-icon-primary icon-remove"></span> Cancel</button>
 			</div>
 			<div id="newthread-tabs-2"></div>
 		</div>
@@ -67,25 +89,46 @@
 		<div id="newpost-tabs">
 			<ul>
 				<li><a href="#newpost-tabs-1">Write</a></li>
-				<li><a href="#newpost-tabs-2">Advanced</a></li>
+				<li><a href="#newpost-tabs-2">Reference</a></li>
+				<li><a href="#newpost-tabs-3">Advanced</a></li>
 			</ul>
 			<div id="newpost-tabs-1">
 				<div class="writethread">
 					Title:<b id="newpost-title"></b>
 					<div class="ui-widget-header ui-corner-all">
-						<div class="buttonset">
-							<button id="newpost-boldbtn" /><span class="ui-button-icon-primary icon-bold"></span></button>
-							<button id="newpost-italicbtn" /><span class="ui-button-icon-primary icon-italic"></span></button>
-							<button id="newpost-underlinebtn" /><span class="ui-button-icon-primary icon-underline"></span></button>
-						</div>
+						<? echo dialog_buttonset("newpost"); ?>
 					</div>
-					<textarea id="newthread-text" class="text ui-corner-all jquorum-text-input"></textarea>
+					<textarea id="newpost-text" class="text ui-corner-all jquorum-bbcode-input"></textarea>
 				</div>
-				<button onclick="Threads.newPost()" style="float:right"><span class="ui-button-icon-primary icon-file"></span> Post</button>
+				<button onclick="Posts.newPost()" style="float:right"><span class="ui-button-icon-primary icon-file"></span> Post</button>
 				<button onclick="" style="float:right"><span class="ui-button-icon-primary icon-save"></span> Save</button>
-				<button onclick="" style="float:right"><span class="ui-button-icon-primary icon-remove"></span> Cancel</button>
+				<button onclick="Interface.hideNewPostDialog()" style="float:right"><span class="ui-button-icon-primary icon-remove"></span> Cancel</button>
 			</div>
 			<div id="newpost-tabs-2"></div>
+			<div id="newpost-tabs-3"></div>
+		</div>
+	</div>
+	
+	<div id="editpost-dialog" title="Edit Post">
+		<div id="editpost-tabs">
+			<ul>
+				<li><a href="#editpost-tabs-1">Write</a></li>
+				<li><a href="#editpost-tabs-2">Reference</a></li>
+				<li><a href="#editpost-tabs-3">Advanced</a></li>
+			</ul>
+			<div id="editpost-tabs-1">
+				<div class="writethread">
+					Title:<b id="editpost-title"></b><input id="editpost-title-input" type="text" class="text ui-corner-all jquorum-text-input newthread-title" />
+					<div class="ui-widget-header ui-corner-all">
+						<? echo dialog_buttonset("editpost"); ?>
+					</div>
+					<textarea id="editpost-text" class="text ui-corner-all jquorum-bbcode-input"></textarea>
+				</div>
+				<button onclick="Posts.editPost()" style="float:right"><span class="ui-button-icon-primary icon-save"></span> Update</button>
+				<button onclick="Interface.hideEditPostDialog()" style="float:right"><span class="ui-button-icon-primary icon-remove"></span> Cancel</button>
+			</div>
+			<div id="editpost-tabs-2"></div>
+			<div id="editpost-tabs-3"></div>
 		</div>
 	</div>
 </div>
